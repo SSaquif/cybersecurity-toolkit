@@ -17,3 +17,14 @@ Supports:
 ```bash
 python encoding_tool.py b64-encode "hello"
 ```
+
+## Running Tests
+
+Run from the root of the project:
+
+```bash
+python -m unittest discover -s tests -v
+
+# Or to run a specific test file:
+python3 -m unittest tests.test_encoding_tool -v
+```
