@@ -14,7 +14,7 @@ def b64_encode(text, encoding="utf-8"):
     # Base64 output is ASCII-safe, so decode it as ASCII instead of the input text encoding.
     encoded_str = encoded_bytes.decode("ascii")
     return encoded_str
-    # return base64.b64encode(text.encode(encoding)).decode()
+    # return base64.b64encode(text.encode(encoding)).decode("ascii")
 
 
 def b64_decode(text, encoding="utf-8"):        
@@ -25,14 +25,17 @@ def b64_decode(text, encoding="utf-8"):
 
 
 def hex_encode(text, encoding="utf-8"):
-    return text.encode(encoding).hex()
+    raw_bytes = text.encode(encoding)
+    hex_str = raw_bytes.hex()
+    return hex_str
 
 
 def hex_decode(text, encoding="utf-8"):
-    return bytes.fromhex(text).decode(encoding)
+    decoded_bytes = bytes.fromhex(text)
+    decoded_str = decoded_bytes.decode(encoding)
+    return decoded_str 
 
-
-def ascii_to_bin(text, encoding=None):
+def ascii_to_bin(text, encoding=None):    
     return " ".join(format(ord(char), "08b") for char in text)
 
 
